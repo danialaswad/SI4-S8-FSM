@@ -12,8 +12,14 @@
         <transition event="e2" target="S3"/>
     </state>
 
-    <state id="S3">
+    <state id="S3" initial="S5">
             <transition event="e3" target="S1"/>
+            <state id="S5">
+                        <transition event="e5" target="S6"/>
+                    </state>
+            <state id="S6">
+                        <transition event="e6" target="S2"/>
+                    </state>
         </state>
 
 </scxml>

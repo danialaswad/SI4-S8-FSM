@@ -92,7 +92,7 @@ public class StateMachine {
 
             Transition transition = (Transition) list.get(0);
             // TODO execute event
-            System.out.println(transition.getEvent());
+            System.out.print (", event : " + transition.getEvent());
 
             return (State) transition.getTargets().get(0);
         }
@@ -106,12 +106,12 @@ public class StateMachine {
 
         entry_procedure();
 
-        System.out.println("current state : " + currentState.getId());
+        System.out.print(" current state : " + currentState.getId());
 
-
+        // TODO call onexit
         currentState = transition_procedure(event);
 
-        System.out.println("new state : " + currentState.getId());
+        System.out.println(", new state : " + currentState.getId());
 
     }
 
