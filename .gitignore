@@ -13,5 +13,6 @@ hs_err_pid*
 Supprimerait .idea/
 Supprimerait State_Chart_Compiler.iml
 Supprimerait src/
-/.idea/
+.idea/
 /State_Chart_Compiler.iml
+fsm.iml
