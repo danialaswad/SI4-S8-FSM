@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<scxml xmlns="http://www.w3.org/2005/07/scxml" version="1.0" binding="early" xmlns:qt="http://www.qt.io/2015/02/scxml-ext" name="WatchState"  initial="Chrono">
+
+    <state id="S1" >
+        <transition event="e1" target="S2"/>
+        <state id="S3">
+                <transition event="e2" target="S1"/>
+            </state>
+    </state>
+
+    <state id="S2">
+        <transition event="e2" target="S1"/>
+    </state>
+
+</scxml>

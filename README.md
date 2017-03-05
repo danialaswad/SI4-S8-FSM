@@ -1,1 +1,9 @@
-# SI4-S8-FSM
+# Finite State Machine
+## SI4 2017
+@author Danial Bin Ahmad
+
+#### Description of the project
+
+
+
+
