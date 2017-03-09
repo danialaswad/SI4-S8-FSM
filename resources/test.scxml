@@ -4,21 +4,25 @@
     <state id="S1" initial="S4">
         <transition event="e1" target="S2"/>
         <state id="S4">
-            <transition event="e4" target="S3"/>
+            <transition event="e2" target="S3"/>
+            <transition event="e3" target="S2"/>
         </state>
     </state>
 
     <state id="S2">
-        <transition event="e2" target="S3"/>
+        <transition event="e1" target="S3"/>
     </state>
 
     <state id="S3" initial="S5">
-            <transition event="e3" target="S1"/>
-            <state id="S5">
-                        <transition event="e5" target="S6"/>
+            <transition event="e1" target="S1"/>
+            <state id="S5" initial="S8">
+                        <transition event="e2" target="S6"/>
+                        <state id="S8">
+                            <transition event="e2" target="S2"/>
+                        </state>
                     </state>
             <state id="S6">
-                        <transition event="e6" target="S2"/>
+                        <transition event="e3" target="S4"/>
                     </state>
         </state>
 

@@ -1,70 +1,38 @@
 package g2.fsm.machine;
 
-import org.apache.commons.scxml.env.SimpleErrorHandler;
-import org.apache.commons.scxml.io.SCXMLParser;
-import org.apache.commons.scxml.model.ModelException;
-import org.apache.commons.scxml.model.SCXML;
-import org.apache.commons.scxml.model.State;
-import org.apache.commons.scxml.model.Transition;
-import org.xml.sax.InputSource;
-import org.xml.sax.SAXException;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
+import g2.fsm.object.State;
+import g2.fsm.object.Transition;
+
 import java.util.List;
 
-/**
- * Created by danial on 04/03/17.
- */
+
 public class StateMachine {
 
-    private SCXML scxml;
     private State currentState;
 
-    public StateMachine(String path){
+    public StateMachine(State currentState){
 
-        InputSource source = null;
-        try {
-            source = new InputSource(new BufferedReader(new FileReader(path)));
-
-            scxml = SCXMLParser.parse(source, new SimpleErrorHandler());
-
-            currentState = (State) scxml.getChildren().get(scxml.getInitial());
-
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (SAXException e) {
-            e.printStackTrace();
-        } catch (ModelException e) {
-            e.printStackTrace();
-        }
+       this.currentState = currentState;
     }
 
     private void execute_onentry(){
 
-        if (currentState.getOnEntry() != null){
+        System.out.println("onentry event for " + currentState.getId());
+        /*if (currentState.getOnEntry() != null){
             // TODO execute onentry event
-            System.out.println("onentry event");
-        }
+        }*/
     }
 
     private void execute_onexit(){
-        if (currentState.getOnExit() != null){
+
+        System.out.println("onexit event");
+        /*if (currentState.getOnExit() != null){
             // TODO execute onexit event
-            System.out.println("onexit event");
-        }
+        }*/
     }
 
-    private void exit_procedure(){
-
-        execute_onexit();
-
-        while(currentState.getParent() != null){
-            currentState = (State) currentState.getParent();
-            exit_procedure();
-        }
+    private void exit_procedure(State fromState, State toState){
 
     }
 
@@ -72,9 +40,9 @@ public class StateMachine {
 
         execute_onentry();
 
-        while(currentState.getFirst()!=null){
+        while(currentState.getFirstChild()!=null){
 
-            currentState = (State) currentState.getChildren().get(currentState.getFirst());
+            currentState = currentState.getChildrens().get(currentState.getFirstChild());
 
             entry_procedure();
         }
@@ -87,17 +55,19 @@ public class StateMachine {
     }
 
     private State transition_procedure_rec(State state, String event){
-        if (state.getTransitionsList(event) != null) {
-            List list = state.getTransitionsList(event);
+        if (state.getTransitions(event) != null) {
+            List list = state.getTransitions(event);
 
             Transition transition = (Transition) list.get(0);
             // TODO execute event
-            System.out.print (", event : " + transition.getEvent());
+            System.out.print (", event : " + transition.getEvent() + " ");
 
-            return (State) transition.getTargets().get(0);
+            exit_procedure(currentState,transition.getTarget());
+
+            return  transition.getTarget();
         }
         if (state.getParent()!=null){
-            return transition_procedure_rec((State) state.getParent(), event);
+            return transition_procedure_rec( state.getParent(), event);
         }
         return currentState;
     }

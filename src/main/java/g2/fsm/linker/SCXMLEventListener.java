@@ -5,6 +5,6 @@ package g2.fsm.linker;
  */
 public interface SCXMLEventListener {
 
-
+    public void execute();
 
 }
