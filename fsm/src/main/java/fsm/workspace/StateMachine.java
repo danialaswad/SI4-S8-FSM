@@ -1,4 +1,4 @@
-package g2.fsm;
+package fsm.workspace;
 
 import java.util.*;
 

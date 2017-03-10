@@ -47,6 +47,8 @@ public class CodeBuilder {
     private static final String MACHINE = "StateMachine";
     private static final String REFLECTOBJECT = "stateReflect";
 
+    private static final String PACKAGE = "fsm.workspace";
+
 
 
     /**
@@ -62,7 +64,7 @@ public class CodeBuilder {
         } catch (ParserConfigurationException | SAXException | IOException e) {
             e.printStackTrace();
         }
-        sourceBuilder.append("package g2.fsm;\n\n")
+        sourceBuilder.append("package "+PACKAGE+";\n\n")
                         .append("import java.util.*;\n\n")
                         .append("public class " + REFLECT+ " {\n\n");
 
@@ -170,7 +172,7 @@ public class CodeBuilder {
     public void buildReflect(){
 
         // Class header and instances
-        reflectBuilder.append("package g2.fsm;\n\n")
+        reflectBuilder.append("package "+PACKAGE+";\n\n")
                 .append("import java.util.*;\n\n")
                 .append("import java.lang.reflect.*;\n\n")
                 .append("public class " + MACHINE+" {\n\n")
@@ -255,12 +257,12 @@ public class CodeBuilder {
         System.out.println(reflectBuilder.toString());
 
 
-        try (FileOutputStream oS = new FileOutputStream(new File("fsm/src/main/java/g2/fsm/" + REFLECT+".java"))) {
+        try (FileOutputStream oS = new FileOutputStream(new File("fsm/src/main/java/fsm/workspace/" + REFLECT+".java"))) {
             oS.write(sourceBuilder.toString().getBytes());
         } catch (IOException e) {
             e.printStackTrace();
         }
-        try (FileOutputStream oS = new FileOutputStream(new File("fsm/src/main/java/g2/fsm/" + MACHINE+".java"))) {
+        try (FileOutputStream oS = new FileOutputStream(new File("fsm/src/main/java/fsm/workspace/" + MACHINE+".java"))) {
             oS.write(reflectBuilder.toString().getBytes());
         } catch (IOException e) {
             e.printStackTrace();
