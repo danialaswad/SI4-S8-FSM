@@ -86,4 +86,17 @@ public class State extends SCXMLObject{
         else
             return "State [id:"+id+"] [initial:"+firstChild+"] [parent:null] " + "[transition:" + transitions.toString() + "]" ;
     }
+
+    public void onEnter() {
+        System.out.println("enter state " + id);
+        if (firstChild != null) getChildrens().get(firstChild).onEnter();
+    }
+
+    public void onExit(State targetParent) {
+        System.out.println("exit state " + id);
+        if (parent != null){
+            if (!parent.equal(targetParent))
+                parent.onExit(targetParent);
+        }
+    }
 }

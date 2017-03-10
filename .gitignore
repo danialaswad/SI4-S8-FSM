@@ -15,4 +15,4 @@ Supprimerait State_Chart_Compiler.iml
 Supprimerait src/
 .idea/
 /State_Chart_Compiler.iml
-fsm.iml
+*.iml

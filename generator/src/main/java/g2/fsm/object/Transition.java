@@ -1,10 +1,6 @@
 package g2.fsm.object;
 
-import g2.fsm.linker.SCXMLEventListener;
 
-/**
- * Created by danial on 09/03/2017.
- */
 public class Transition extends SCXMLObject {
 
     // Event name of the transition
@@ -31,5 +27,15 @@ public class Transition extends SCXMLObject {
 
     public String toString() {
         return "Transition [event:"+event+"] [target:" + target.getId() + "]" ;
+    }
+
+    public void onEnter() {
+        System.out.println("enter transition with event :  " + event);
+
+    }
+
+    public void onExit(State targetParent) {
+        System.out.println("exit transition with event :" + event);
+
     }
 }

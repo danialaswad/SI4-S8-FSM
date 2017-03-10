@@ -16,7 +16,7 @@
     <state id="S3" initial="S5">
             <transition event="e1" target="S1"/>
             <state id="S5" initial="S8">
-                        <transition event="e2" target="S6"/>
+                        <transition event="e4" target="S6"/>
                         <state id="S8">
                             <transition event="e2" target="S2"/>
                         </state>
