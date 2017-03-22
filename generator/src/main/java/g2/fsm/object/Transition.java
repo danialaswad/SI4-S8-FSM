@@ -8,7 +8,13 @@ public class Transition extends SCXMLObject {
 
     private State target;
 
-    public Transition(String event){
+
+
+    private State source;
+
+    public Transition(String event, State source, State target){
+        this.source = source;
+        this.target = target;
         this.event = event;
     }
 
@@ -25,17 +31,26 @@ public class Transition extends SCXMLObject {
         return target;
     }
 
+    public State getSource() {
+        return source;
+    }
+
+    public void setSource(State source) {
+        this.source = source;
+    }
+
     public String toString() {
-        return "Transition [event:"+event+"] [target:" + target.getId() + "]" ;
+        return "Transition [event:"+event+"] [source:" + source.getId() + "] [target:" + target.getId() + "]" ;
     }
 
-    public void onEnter() {
+    public SCXMLObject onEnter() {
         System.out.println("enter transition with event :  " + event);
+        return null;
 
     }
 
-    public void onExit(State targetParent) {
+    public SCXMLObject onExit(State targetParent) {
         System.out.println("exit transition with event :" + event);
-
+        return null;
     }
 }

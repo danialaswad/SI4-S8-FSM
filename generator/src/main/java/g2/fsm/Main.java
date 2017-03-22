@@ -1,24 +1,23 @@
 package g2.fsm;
 
 
-import g2.fsm.machine.StateMachine;
-import g2.fsm.builder.CodeBuilder;
-import g2.fsm.object.State;
+import g2.fsm.machine.StateMachineReader;
+import g2.fsm.parser.SCXMLParser;
 
-/**
- * Created by danial on 03/03/17.
- */
+
 public class Main {
 
     public static void main(String[] args){
-        String[] event = {"e1","e1","e1","e2","e2","e1","e2","e4","e1"};
-        //String[] event ={"e4", "e6"};
-        CodeBuilder smBuilder = new CodeBuilder();
-        smBuilder.build();
 
-        /*StateMachine stateMachine = new StateMachine(state);
-        for (int i = 0; i < event.length ; i++) {
-            stateMachine.execute(event[i]);
-        }*/
+        SCXMLParser parse = new SCXMLParser();
+        
+        parse.parse();
+
+
+        StateMachineReader reader = new StateMachineReader();
+
+        reader.execute("e1");
+        reader.execute("e1");
+        reader.execute("e4");
     }
 }

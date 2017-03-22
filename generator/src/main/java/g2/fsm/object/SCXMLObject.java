@@ -5,7 +5,7 @@ public abstract class SCXMLObject {
 
     public abstract String toString();
 
-    public abstract void onEnter();
+    public abstract SCXMLObject onEnter();
 
-    public abstract void onExit(State targetParent);
+    public abstract SCXMLObject onExit(State target);
 }
