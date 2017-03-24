@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<scxml xmlns="http://www.w3.org/2005/07/scxml" version="1.0" binding="early" xmlns:qt="http://www.qt.io/2015/02/scxml-ext" name="WatchState"  initial="S1">
+
+    <state id="S1" initial="S2">
+        <transition event="Button1" target="S4">
+            <send event="print-hello"/>
+        </transition>
+        <state id="S2">
+            <transition event="Button1" target="S3">
+                <send event="print-world"/>
+            </transition>
+        </state>
+        <state id="S3">
+            <transition event="Button2" target="S2">
+                <send event="print-java"/>
+            </transition>
+        </state>
+    </state>
+
+    <state id="S4">
+        <transition event="Button1" target="S1">
+            <send event="print-bye"/>
+        </transition>
+    </state>
+
+</scxml>

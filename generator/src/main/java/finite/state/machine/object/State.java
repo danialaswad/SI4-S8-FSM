@@ -1,12 +1,10 @@
-package g2.fsm.object;
+package finite.state.machine.object;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 
-public class State extends SCXMLObject{
+public class State {
 
     // State id is unique
     private String id;
@@ -17,13 +15,11 @@ public class State extends SCXMLObject{
     // Null if no initial child
     private State firstChild;
 
-
     public State(String id){
         this.id = id;
-        this.parent = null;
-        this.firstChild = null;
+        parent = null;
+        firstChild = null;
     }
-
     public State(String id, State parent){
         this.id = id;
         this.parent = parent;
@@ -68,20 +64,18 @@ public class State extends SCXMLObject{
         }
         return l;
     }
-    public SCXMLObject onEnter() {
-        System.out.println("enter state " + id);
+    public State enterProcedure() {
         if (firstChild != null) {
-            return firstChild.onEnter();
+            return firstChild.enterProcedure();
         }
 
         return this;
     }
 
-    public SCXMLObject onExit(State target) {
+    public State exitProcedure(State target) {
         if (!target.getAllParent().contains(id) ) {
-            System.out.println("exit state " + id);
             if (parent != null) {
-                return parent.onExit(target);
+                return parent.exitProcedure(target);
             }
         }
 
