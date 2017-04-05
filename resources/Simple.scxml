@@ -7,20 +7,21 @@
         </transition>
         <state id="S2">
             <transition event="Button1" target="S3">
-                <send event="print-world"/>
+                <send event="print-hello"/>
             </transition>
         </state>
         <state id="S3">
             <transition event="Button2" target="S2">
-                <send event="print-java"/>
+                <send event="print-bye"/>
             </transition>
         </state>
     </state>
 
     <state id="S4">
-        <transition event="Button1" target="S1">
+        <transition event="Button1" target="fnl">
             <send event="print-bye"/>
         </transition>
     </state>
 
+    <final id="fnl"/>
 </scxml>
