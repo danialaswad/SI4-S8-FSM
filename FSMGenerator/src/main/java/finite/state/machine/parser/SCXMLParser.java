@@ -55,6 +55,8 @@ public class SCXMLParser {
                 parse(childNode.getNodeName(), (Element) childNode);
             }
         }
+
+        generator.build();
     }
 
     private void parse(String nodeName, Element element, Element ... args){

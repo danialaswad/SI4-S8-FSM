@@ -3,93 +3,65 @@ package finite.state.machine.engine;
 import finite.state.machine.generator.StateMachine;
 import finite.state.machine.object.State;
 import finite.state.machine.object.Transition;
+import finite.state.machine.object.FinalState;
 
 class StateMachineImpl implements StateMachine {
 
-	private final State working;
-	private final State red;
-	private final Transition goGreenred;
-	private final State yellow;
-	private final State redGoingGreen;
-	private final Transition startGoGreenredGoingGreen;
-	private final State greenGoingRed;
-	private final Transition startGoRedgreenGoingRed;
-	private final State green;
-	private final Transition goRedgreen;
-	private final Transition smashedworking;
-	private final State broken;
-	private final State blinking;
-	private final Transition unblinkblinking;
-	private final State unBlinking;
-	private final Transition blinkunBlinking;
-	private final Transition repairbroken;
+	private final State opened;
+	private final Transition stopopened;
+	private final Transition closeopened;
+	private final State isClosing;
+	private final Transition isCloseisClosing;
+	private final State closed;
+	private final Transition stopclosed;
+	private final Transition openclosed;
+	private final State isOpening;
+	private final Transition isOpenisOpening;
+	private final FinalState Final_1;
 
 	public State getInitial() {
-		return working;
+		return opened;
 	}
 
-	public Transition getGoGreenred() {
-		return goGreenred;
+	public Transition getStopopened() {
+		return stopopened;
 	}
 
-	public Transition getStartGoGreenredGoingGreen() {
-		return startGoGreenredGoingGreen;
+	public Transition getCloseopened() {
+		return closeopened;
 	}
 
-	public Transition getStartGoRedgreenGoingRed() {
-		return startGoRedgreenGoingRed;
+	public Transition getIsCloseisClosing() {
+		return isCloseisClosing;
 	}
 
-	public Transition getGoRedgreen() {
-		return goRedgreen;
+	public Transition getStopclosed() {
+		return stopclosed;
 	}
 
-	public Transition getSmashedworking() {
-		return smashedworking;
+	public Transition getOpenclosed() {
+		return openclosed;
 	}
 
-	public Transition getUnblinkblinking() {
-		return unblinkblinking;
-	}
-
-	public Transition getBlinkunBlinking() {
-		return blinkunBlinking;
-	}
-
-	public Transition getRepairbroken() {
-		return repairbroken;
+	public Transition getIsOpenisOpening() {
+		return isOpenisOpening;
 	}
 
 	StateMachineImpl() {
-		this.working = new State("working");
-		this.red = new State("red", working);
-		this.yellow = new State("yellow", working);
-		this.redGoingGreen = new State("redGoingGreen", yellow);
-		this.greenGoingRed = new State("greenGoingRed", yellow);
-		this.yellow.setFirstChild(redGoingGreen);
-		this.green = new State("green", working);
-		this.working.setFirstChild(red);
-		this.broken = new State("broken");
-		this.blinking = new State("blinking", broken);
-		this.unBlinking = new State("unBlinking", broken);
-		this.broken.setOnEnter("stoplightBroken");
-		this.broken.setOnExit("stoplightRepair");
-		this.broken.setFirstChild(blinking);
-		this.goGreenred = new Transition("goGreen", red, redGoingGreen);
-		this.goGreenred.setSend("goGreen");
-		this.startGoGreenredGoingGreen = new Transition("startGoGreen",
-				redGoingGreen, green);
-		this.startGoGreenredGoingGreen.setSend("startGoGreen");
-		this.startGoRedgreenGoingRed = new Transition("startGoRed",
-				greenGoingRed, red);
-		this.startGoRedgreenGoingRed.setSend("startGoRed");
-		this.goRedgreen = new Transition("goRed", green, greenGoingRed);
-		this.goRedgreen.setSend("goRed");
-		this.smashedworking = new Transition("smashed", working, broken);
-		this.unblinkblinking = new Transition("unblink", blinking, unBlinking);
-		this.unblinkblinking.setSend("unblink");
-		this.blinkunBlinking = new Transition("blink", unBlinking, blinking);
-		this.blinkunBlinking.setSend("blink");
-		this.repairbroken = new Transition("repair", broken, working);
+		this.opened = new State("opened");
+		this.isClosing = new State("isClosing");
+		this.closed = new State("closed");
+		this.isOpening = new State("isOpening");
+		this.Final_1 = new FinalState("Final_1");
+		this.stopopened = new Transition("stop", opened, Final_1);
+		this.closeopened = new Transition("close", opened, isClosing);
+		this.closeopened.setSend("startClosingMotor");
+		this.isCloseisClosing = new Transition("isClose", isClosing, closed);
+		this.isCloseisClosing.setSend("stopClosingMotor");
+		this.stopclosed = new Transition("stop", closed, Final_1);
+		this.openclosed = new Transition("open", closed, isOpening);
+		this.openclosed.setSend("startOpeningMotor");
+		this.isOpenisOpening = new Transition("isOpen", isOpening, opened);
+		this.isOpenisOpening.setSend("stopOpeningMotor");
 	}
 }
