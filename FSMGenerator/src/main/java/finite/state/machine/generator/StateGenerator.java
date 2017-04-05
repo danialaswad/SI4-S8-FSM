@@ -84,7 +84,7 @@ public class StateGenerator {
         stateBuilder.append("this.").append(state).append(".setFirstChild(").append(child).append(");");
     }
 
-    public String build(){
+    public void build(){
         javaClass.addMethod().setConstructor(true).setPackagePrivate().setBody(stateBuilder.toString() + transitionBuilder.toString());
         try (FileOutputStream oS = new FileOutputStream(new File(  PATH + CLASSNAME+".java"))) {
             oS.write(javaClass.toString().getBytes());
@@ -92,7 +92,6 @@ public class StateGenerator {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return javaClass.toString();
     }
 
 

@@ -43,10 +43,7 @@ public class SCXMLParser {
         }
     }
 
-    /**
-     *
-     */
-    public String parse(){
+    public void parse(){
         String rootState = document.getDocumentElement().getAttribute(INITIAL);
         generator.setInitial(rootState);
 
@@ -58,8 +55,6 @@ public class SCXMLParser {
                 parse(childNode.getNodeName(), (Element) childNode);
             }
         }
-
-        return generator.build();
     }
 
     private void parse(String nodeName, Element element, Element ... args){
