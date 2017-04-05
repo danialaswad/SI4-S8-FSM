@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<scxml xmlns="http://www.w3.org/2005/07/scxml" version="1.0" binding="early" xmlns:qt="http://www.qt.io/2015/02/scxml-ext" name="ScxmlExample" qt:editorversion="4.2.1" initial="opened">
+    <state id="opened">
+        <qt:editorinfo geometry="4.43;177.01;-60;-50;120;100" scenegeometry="4.43;177.01;-55.57;127.01;120;100"/>
+        <transition type="external" event="stop" target="Final_1"/>
+        <transition type="external" event="close" target="isClosing">
+            <qt:editorinfo endTargetFactors="10.95;72.89"/>
+            <send event="startClosingMotor"/>
+        </transition>
+    </state>
+    <state id="isClosing">
+        <qt:editorinfo geometry="184.39;48.67;-60;-50;120;100" scenegeometry="184.39;48.67;124.39;-1.33;120;100"/>
+        <transition type="external" event="isClose" target="closed">
+            <qt:editorinfo endTargetFactors="13.12;18.21"/>
+            <send event="stopClosingMotor"/>
+        </transition>
+    </state>
+    <state id="closed">
+        <qt:editorinfo geometry="385;166.69;-60;-50;120;100" scenegeometry="385;166.69;325;116.69;120;100"/>
+        <transition type="external" event="stop" target="Final_1">
+            <qt:editorinfo endTargetFactors="73.70;39.46"/>
+        </transition>
+        <transition type="external" event="open" target="isOpening">
+            <qt:editorinfo endTargetFactors="81.45;52.55"/>
+            <send event="startOpeningMotor"/>
+        </transition>
+    </state>
+    <state id="isOpening">
+        <qt:editorinfo geometry="184.39;236.01;-60;-50;120;100" scenegeometry="184.39;236.01;124.39;186.01;120;100"/>
+        <transition type="external" event="isOpen" target="opened">
+            <qt:editorinfo endTargetFactors="83.62;65.26"/>
+            <send event="stopOpeningMotor"/>
+        </transition>
+    </state>
+    <final id="Final_1">
+        <qt:editorinfo geometry="184.39;424.83;-20;-20;40;40" scenegeometry="184.39;424.83;164.39;404.83;40;40"/>
+    </final>
+</scxml>
