@@ -1,6 +1,8 @@
 package finite.state.machine.object;
 
-public class FSMObject {
+import java.io.Serializable;
+
+public class FSMObject implements Serializable {
 
     private String onExit;
     private String onEnter;
