@@ -10,27 +10,36 @@ public class MyAutoDoor extends MyWorkSpaceImpl {
         start(this);
     }
 
+    private int i =0;
 
     @FSMEvent(event="startClosingMotor")
     public void startClosingMotor(){
+        increment();
         System.out.println("start closing the door");
     }
 
     @FSMEvent(event="stopClosingMotor")
     public void stopClosingMotor(){
+        increment();
         System.out.println("stop closing the door");
     }
 
     @FSMEvent(event="startOpeningMotor")
     public void startOpeningMotor(){
+        increment();
         System.out.println("start opening the door");
     }
 
     @FSMEvent(event="stopOpeningMotor")
     public void stopOpeningMotor(){
-        System.out.println("stop opening the door");
+
+        System.out.println("stop opening the door : " + i);
     }
 
+
+    private void increment(){
+        i++;
+    }
 
     public static void main(String[] args){
         MyAutoDoor stateMachine = new MyAutoDoor();

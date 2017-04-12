@@ -58,17 +58,17 @@ public class StateGenerator {
         transitionBuilder.append("this.").append(event).append(source).append(" = new Transition(\"").append(event).append("\",").append(source).append(");");
     }
 
-    public void setSendEvent(String event, String send){
-        transitionBuilder.append("this.").append(eventMap.get(event)).append(".setSend(\"").append(send).append("\");");
+    public void setEvent(String event, String send, String type){
+        transitionBuilder.append("this.").append(eventMap.get(event)).append(".setEvent(\"").append(send).append("\",\"").append(type).append("\");");
     }
 
 
-    public void addOnEntery(String source, String event){
-        stateBuilder.append("this.").append(source).append(".setOnEnter(\"").append(event).append("\");");
+    public void addOnEntery(String source, String event, String type){
+        stateBuilder.append("this.").append(source).append(".setOnEnter(\"").append(event).append("\", \"").append(type).append("\");");
     }
 
-    public void addOnExit(String source, String event){
-        stateBuilder.append("this.").append(source).append(".setOnExit(\"").append(event).append("\");");
+    public void addOnExit(String source, String event, String type){
+        stateBuilder.append("this.").append(source).append(".setOnExit(\"").append(event).append("\",\"").append(type).append("\");");
     }
 
     public void addFinal(String id){

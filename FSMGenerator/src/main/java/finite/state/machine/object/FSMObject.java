@@ -4,8 +4,8 @@ import java.io.Serializable;
 
 public class FSMObject implements Serializable {
 
-    private String onExit;
-    private String onEnter;
+    private FSMEvents onExit;
+    private FSMEvents onEnter;
 
     public FSMObject(){
 
@@ -27,19 +27,19 @@ public class FSMObject implements Serializable {
         Getter and Setter
      */
 
-    public String getOnExit() {
+    public FSMEvents getOnExit() {
         return onExit;
     }
 
-    public void setOnExit(String onExit) {
-        this.onExit = onExit;
+    public void setOnExit(String event, String type) {
+        this.onExit = new FSMEvents(event,type);
     }
 
-    public String getOnEnter() {
+    public FSMEvents getOnEnter() {
         return onEnter;
     }
 
-    public void setOnEnter(String onEnter) {
-        this.onEnter = onEnter;
+    public void setOnEnter(String event, String type) {
+        this.onEnter = new FSMEvents(event,type);
     }
 }

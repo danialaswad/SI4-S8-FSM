@@ -3,65 +3,36 @@ package finite.state.machine.engine;
 import finite.state.machine.generator.StateMachine;
 import finite.state.machine.object.State;
 import finite.state.machine.object.Transition;
-import finite.state.machine.object.FinalState;
 
 class StateMachineImpl implements StateMachine {
 
-	private final State opened;
-	private final Transition stopopened;
-	private final Transition closeopened;
-	private final State isClosing;
-	private final Transition isCloseisClosing;
-	private final State closed;
-	private final Transition stopclosed;
-	private final Transition openclosed;
-	private final State isOpening;
-	private final Transition isOpenisOpening;
-	private final FinalState Final_1;
+	private final State State1;
+	private final Transition in1State1;
+	private final State State2;
+	private final Transition in2State2;
 
 	public State getInitial() {
-		return opened;
+		return State1;
 	}
 
-	public Transition getStopopened() {
-		return stopopened;
+	public Transition getIn1State1() {
+		return in1State1;
 	}
 
-	public Transition getCloseopened() {
-		return closeopened;
-	}
-
-	public Transition getIsCloseisClosing() {
-		return isCloseisClosing;
-	}
-
-	public Transition getStopclosed() {
-		return stopclosed;
-	}
-
-	public Transition getOpenclosed() {
-		return openclosed;
-	}
-
-	public Transition getIsOpenisOpening() {
-		return isOpenisOpening;
+	public Transition getIn2State2() {
+		return in2State2;
 	}
 
 	StateMachineImpl() {
-		this.opened = new State("opened");
-		this.isClosing = new State("isClosing");
-		this.closed = new State("closed");
-		this.isOpening = new State("isOpening");
-		this.Final_1 = new FinalState("Final_1");
-		this.stopopened = new Transition("stop", opened, Final_1);
-		this.closeopened = new Transition("close", opened, isClosing);
-		this.closeopened.setSend("startClosingMotor");
-		this.isCloseisClosing = new Transition("isClose", isClosing, closed);
-		this.isCloseisClosing.setSend("stopClosingMotor");
-		this.stopclosed = new Transition("stop", closed, Final_1);
-		this.openclosed = new Transition("open", closed, isOpening);
-		this.openclosed.setSend("startOpeningMotor");
-		this.isOpenisOpening = new Transition("isOpen", isOpening, opened);
-		this.isOpenisOpening.setSend("stopOpeningMotor");
+		this.State1 = new State("State1");
+		this.State1.setOnExit("action1", "send");
+		this.State1.setOnEnter("action5", "send");
+		this.State2 = new State("State2");
+		this.State2.setOnEnter("action3", "send");
+		this.State2.setOnExit("action4", "send");
+		this.in1State1 = new Transition("in1", State1, State2);
+		this.in1State1.setEvent("in2", "raise");
+		this.in2State2 = new Transition("in2", State2, State1);
+		this.in2State2.setEvent("action2", "send");
 	}
 }

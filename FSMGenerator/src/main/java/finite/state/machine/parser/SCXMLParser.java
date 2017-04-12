@@ -26,6 +26,7 @@ public class SCXMLParser {
     private static final String TARGET = "target";
     private static final String EVENT = "event";
     private static final String SEND = "send";
+    private static final String RAISE = "raise";
     private static final String FINAL = "final";
     private static final String ONENTER = "onentry";
     private static final String ONEXIT = "onexit";
@@ -66,6 +67,7 @@ public class SCXMLParser {
                 else state(element); break;
             case TRANSITION : transition(element, args[0]); break;
             case SEND : send(element, args[0]); break;
+            case RAISE: raise(element,args[0]); break;
             case FINAL : final_(element); break;
             case ONENTER : onEnter(element,args[0]); break;
             case ONEXIT : onExit(element,args[0]); break;
@@ -114,7 +116,10 @@ public class SCXMLParser {
     }
 
     private void send(Element element, Element parent){
-        generator.setSendEvent(parent.getAttribute(EVENT), element.getAttribute(EVENT));
+        generator.setEvent(parent.getAttribute(EVENT), element.getAttribute(EVENT), SEND);
+    }
+    private void raise(Element element, Element parent){
+        generator.setEvent(parent.getAttribute(EVENT), element.getAttribute(EVENT), RAISE);
     }
 
     private void final_(Element element){
@@ -124,14 +129,14 @@ public class SCXMLParser {
     private void onEnter(Element element, Element parent){
         if(element.hasChildNodes()) {
             Element childElement = (Element) element.getElementsByTagName(SEND).item(0);
-            generator.addOnEntery(parent.getAttribute(ID),childElement.getAttribute(EVENT));
+            generator.addOnEntery(parent.getAttribute(ID),childElement.getAttribute(EVENT), childElement.getTagName());
         }
     }
 
     private void onExit(Element element, Element parent){
         if(element.hasChildNodes()) {
             Element childElement = (Element) element.getElementsByTagName(SEND).item(0);
-            generator.addOnExit(parent.getAttribute(ID),childElement.getAttribute(EVENT));
+            generator.addOnExit(parent.getAttribute(ID),childElement.getAttribute(EVENT), childElement.getTagName());
         }
     }
 }

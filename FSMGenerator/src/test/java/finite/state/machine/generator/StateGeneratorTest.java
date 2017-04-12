@@ -1,13 +1,14 @@
 package finite.state.machine.generator;
 
 
+import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
 public class StateGeneratorTest {
 
-    StateGenerator generator;
+    private StateGenerator generator;
 
     @Before
     public void setUp(){

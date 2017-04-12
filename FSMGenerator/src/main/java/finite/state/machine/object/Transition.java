@@ -4,7 +4,7 @@ package finite.state.machine.object;
 public class Transition extends FSMObject{
 
     // Event name of the transition
-    private String event;
+    private String id;
 
     // Target state or destination state
     private State target;
@@ -13,23 +13,23 @@ public class Transition extends FSMObject{
     private State source;
 
     // Send method
-    private String send;
+    private FSMEvents event;
 
     // Transition type (INTERNAL, EXTERNAL)
     private TransitionType type;
 
-    public Transition(String event, State source, State target){
+    public Transition(String id, State source, State target){
         super();
         this.source = source;
         this.target = target;
-        this.event = event;
+        this.id = id;
         type = TransitionType.EXTERNAL;
     }
 
-    public Transition(String event, State source){
+    public Transition(String id, State source){
         super();
         this.source = source;
-        this.event = event;
+        this.id = id;
         type = TransitionType.INTERNAL;
     }
 
@@ -38,8 +38,8 @@ public class Transition extends FSMObject{
      * Verify the existance of send instance
      * @return
      */
-    public boolean hasSend(){
-        return send!= null;
+    public boolean hasEvent(){
+        return this.event != null;
     }
 
 
@@ -47,8 +47,8 @@ public class Transition extends FSMObject{
      Getter and Setter
      */
 
-    public String getEvent(){
-        return event;
+    public String getId(){
+        return id;
     }
 
     public void setTarget(State target){
@@ -67,12 +67,12 @@ public class Transition extends FSMObject{
         this.source = source;
     }
 
-    public void setSend(String send){
-        this.send = send;
+    public void setEvent(String event, String type){
+        this.event = new FSMEvents(event, type);
     }
 
-    public String getSend(){
-        return send;
+    public FSMEvents getEvent(){
+        return event;
     }
 
     public TransitionType getType(){
@@ -80,7 +80,7 @@ public class Transition extends FSMObject{
     }
 
     public String toString() {
-        return "Transition [event:"+event+"] [source:" + source.getId() + "] [target:" + target.getId() + "]" ;
+        return "Transition [id:"+ id +"] [source:" + source.getId() + "] [target:" + target.getId() + "]" ;
     }
 
 }

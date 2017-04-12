@@ -14,7 +14,7 @@ public class MyWorkSpaceImpl implements MyWorkSpace {
 
 
     public void submitEvent(String e){
-        reader.execute(e);
+        reader.activate(e);
     }
 
 
