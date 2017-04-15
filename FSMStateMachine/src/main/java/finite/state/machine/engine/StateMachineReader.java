@@ -128,7 +128,7 @@ public class StateMachineReader {
                     }
                 }
             }
-            if (currentState.getParent()!=null){
+            if (!currentState.getId().equals(target.getId())&& currentState.getParent()!=null){
                 currentState = currentState.getParent();
                 fromState(target);
             }

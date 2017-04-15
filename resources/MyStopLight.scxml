@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<scxml xmlns="http://www.w3.org/2005/07/scxml" version="1.0" binding="early" xmlns:qt="http://www.qt.io/2015/02/scxml-ext" name="ScxmlExample" qt:editorversion="4.2.1" initial="StopLight">
+    <state id="StopLight" initial="Work">
+        <qt:editorinfo scenegeometry="69.36;48.34;-117.29;-147.55;784.92;809.89" geometry="69.36;48.34;-186.65;-195.89;784.92;809.89"/>
+        <state id="Work" initial="Red">
+            <qt:editorinfo scenegeometry="224.55;114.55;-97.29;-58.96;744.92;358.51" geometry="155.19;66.21;-321.84;-173.51;744.92;358.51"/>
+            <state id="Red">
+                <qt:editorinfo scenegeometry="222.39;52.55;68.16;2.55;214.23;100" geometry="-2.16;-62;-154.23;-50;214.23;100"/>
+                <transition type="external" event="ry" target="R_Yellow">
+                    <qt:editorinfo endTargetFactors="18.54;45.02"/>
+                    <send event="toYellow"/>
+                </transition>
+                <onentry>
+                    <raise event="redToRed"/>
+                </onentry>
+                <transition type="external" event="redToRed" target="Red">
+                    <send event="countRed"/>
+                </transition>
+            </state>
+            <state id="R_Yellow">
+                <qt:editorinfo scenegeometry="567.63;75.15;399.86;25.15;227.77;100" geometry="343.08;-39.40;-167.77;-50;227.77;100"/>
+                <transition type="external" event="yg" target="Green">
+                    <qt:editorinfo endTargetFactors="95.37;10.85"/>
+                    <send event="toGreen"/>
+                </transition>
+                <onentry>
+                    <raise event="r_yellowToYellow"/>
+                </onentry>
+                <transition type="external" event="r_yellowToYellow" target="R_Yellow">
+                    <send event="countRYellow"/>
+                </transition>
+            </state>
+            <state id="Green">
+                <qt:editorinfo scenegeometry="404.63;219.65;243.29;169.65;221.34;100" geometry="180.08;105.10;-161.34;-50;221.34;100"/>
+                <transition type="external" event="gy" target="G_Yellow">
+                    <qt:editorinfo endTargetFactors="81.66;42.21"/>
+                    <send event="toYellow"/>
+                </transition>
+                <onentry>
+                    <raise event="greenToGreen"/>
+                </onentry>
+                <transition type="external" event="greenToGreen" target="Green">
+                    <send event="countGreen"/>
+                </transition>
+            </state>
+            <transition type="external" target="Broken" event="broke">
+                <qt:editorinfo endTargetFactors="26.43;10.55" startTargetFactors="27.42;94.23"/>
+            </transition>
+            <onentry>
+                <send event="working"/>
+            </onentry>
+            <onexit>
+                <send event="broken"/>
+            </onexit>
+            <state id="G_Yellow">
+                <qt:editorinfo scenegeometry="104.05;179.19;-77.29;129.19;241.34;100" geometry="-120.50;64.64;-181.34;-50;241.34;100"/>
+                <transition type="external" event="yr" target="Red">
+                    <qt:editorinfo endTargetFactors="88.79;67.49" startTargetFactors="78.91;15.87"/>
+                    <send event="toRed"/>
+                </transition>
+                <transition type="external" event="g_yellowToYellow" target="G_Yellow">
+                    <qt:editorinfo endTargetFactors="22.80;55.98"/>
+                    <send event="countGYellow"/>
+                </transition>
+                <onentry>
+                    <raise event="g_yellowToYellow"/>
+                </onentry>
+            </state>
+        </state>
+        <state id="Broken" initial="Blink">
+            <qt:editorinfo scenegeometry="232.86;478.20;77.50;352.88;508.36;287.32" geometry="163.50;429.86;-155.36;-125.32;508.36;287.32"/>
+            <state id="Blink">
+                <qt:editorinfo scenegeometry="174.57;502.89;114.57;452.89;120;100" geometry="-58.29;24.69;-60;-50;120;100"/>
+                <transition type="external" event="unblink" target="UnBlink">
+                    <qt:editorinfo endTargetFactors="9.20;39.03" localGeometry="159.53;-52.02"/>
+                    <send event="unblinking"/>
+                </transition>
+                <onentry>
+                    <raise event="unblink"/>
+                </onentry>
+            </state>
+            <state id="UnBlink">
+                <qt:editorinfo scenegeometry="492.48;501.74;432.48;451.74;120;100" geometry="259.62;23.54;-60;-50;120;100"/>
+                <transition type="external" event="blink" target="Blink">
+                    <qt:editorinfo endTargetFactors="88.25;59.97" movePoint="-42.77;35.84" localGeometry="-164.16;40.46"/>
+                    <send event="blinking"/>
+                </transition>
+                <onentry>
+                    <raise event="blink"/>
+                </onentry>
+            </state>
+            <transition type="external" event="repair" target="Work">
+                <qt:editorinfo endTargetFactors="68.93;96.25" movePoint="6.94;1.16" startTargetFactors="60.01;4.62"/>
+            </transition>
+        </state>
+    </state>
+</scxml>

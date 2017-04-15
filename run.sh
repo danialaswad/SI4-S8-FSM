@@ -2,8 +2,11 @@
 
 name=$1
 if [[ -n "$name" ]]; then
+	cd FSMStateMachine 
+	mvn -q clean package install -DskipTests
+	cd ..
 	echo 'Compiling FSM ...'
-	mvn -q clean install -DskipTests
+	mvn -q clean package install -DskipTests
 
 	echo 'Executing FSM ...'
     mvn -q exec:java -Dexec.mainClass=$1

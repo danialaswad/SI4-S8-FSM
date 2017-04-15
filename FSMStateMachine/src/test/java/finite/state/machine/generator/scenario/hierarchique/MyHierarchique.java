@@ -1,4 +1,4 @@
-package finite.state.machine.generator.scenario;
+package finite.state.machine.generator.scenario.hierarchique;
 
 import finite.state.machine.generator.StateMachine;
 import finite.state.machine.object.State;

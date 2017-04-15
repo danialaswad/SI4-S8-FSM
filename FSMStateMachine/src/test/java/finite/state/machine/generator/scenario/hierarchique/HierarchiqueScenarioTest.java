@@ -1,7 +1,6 @@
-package finite.state.machine.generator.scenario;
+package finite.state.machine.generator.scenario.hierarchique;
 
 import finite.state.machine.engine.StateMachineReader;
-import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -25,7 +24,7 @@ public class HierarchiqueScenarioTest {
     @Test
     public void transition1Test(){
         work.submitEvent("e1");
-         Assert.assertEquals("State4", reader.getCurrentState().getId());
+        Assert.assertEquals("State4", reader.getCurrentState().getId());
         work.submitEvent("e1");
         Assert.assertEquals("State2", reader.getCurrentState().getId());
     }
