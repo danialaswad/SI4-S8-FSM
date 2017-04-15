@@ -83,9 +83,13 @@ public class StateGenerator {
         stateBuilder.append("this.").append(state).append(".setFirstChild(").append(child).append(");");
     }
 
+    public void setLog(String log,String transition){
+        transitionBuilder.append("this.").append(eventMap.get(transition)).append(".setLog(\"").append(log).append("\");");
+    }
     public void build(){
         build(CLASSNAME);
     }
+
     public void build(String name){
         javaClass.setName(name);
         javaClass.addMethod().setConstructor(true).setPublic().setBody(stateBuilder.toString() + transitionBuilder.toString());

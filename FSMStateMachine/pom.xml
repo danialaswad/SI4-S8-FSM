@@ -13,7 +13,7 @@
         <argumentA>-f</argumentA>
         <argumentB>StateMachineImpl</argumentB>
         <argumentC>-n</argumentC>
-        <argumentD>MyWorSpaceImpl</argumentD>
+        <argumentD>StateMachineImpl</argumentD>
         <argumentE>-w</argumentE>
         <argumentF>t</argumentF>
     </properties>

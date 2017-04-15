@@ -35,6 +35,8 @@ public class SCXMLParser {
     private static final String FINAL = "final";
     private static final String ONENTER = "onentry";
     private static final String ONEXIT = "onexit";
+    private static final String LOG = "log";
+    private static final String LABEL = "label";
 
     public SCXMLParser(String scxmlFile){
         generator = new StateGenerator();
@@ -77,6 +79,7 @@ public class SCXMLParser {
             case FINAL : final_(element); break;
             case ONENTER : onEnter(element,args[0]); break;
             case ONEXIT : onExit(element,args[0]); break;
+            case LOG : log(element,args[0]);break;
             default:break;
         }
     }
@@ -157,6 +160,10 @@ public class SCXMLParser {
                 generator.addOnExit(parent.getAttribute(ID), childElement.getAttribute(EVENT), childElement.getTagName());
             }
         }
+    }
+
+    private void log(Element element, Element parent){
+        generator().setLog(element.getAttribute(LABEL), parent.getAttribute(EVENT));
     }
 
     private void addToList(String event){

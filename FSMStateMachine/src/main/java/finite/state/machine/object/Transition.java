@@ -18,6 +18,8 @@ public class Transition extends FSMObject{
     // Transition type (INTERNAL, EXTERNAL)
     private TransitionType type;
 
+    private String log;
+
     public Transition(String id, State source, State target){
         super();
         this.source = source;
@@ -42,6 +44,9 @@ public class Transition extends FSMObject{
         return this.event != null;
     }
 
+    public boolean hasLog(){
+        return this.log != null;
+    }
 
     /*
      Getter and Setter
@@ -77,6 +82,14 @@ public class Transition extends FSMObject{
 
     public TransitionType getType(){
         return type;
+    }
+
+    public void setLog(String log){
+        this.log = log;
+    }
+
+    public String getLog(){
+        return log;
     }
 
     public String toString() {

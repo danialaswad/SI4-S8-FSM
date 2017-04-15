@@ -11,6 +11,8 @@ import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.Map;
 import java.util.Queue;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 
 public class StateMachineReader {
@@ -21,12 +23,14 @@ public class StateMachineReader {
     private MyWorkSpace ms;
     private Map<String, Method> transitionEvent;
     private Map<String, Method> userEvent;
+    private Logger logger;
 
     private Queue<FSMEvents> internalQueue;
 
     public StateMachineReader(MyWorkSpace ms, StateMachine sm){
         this.ms = ms;
         this.machine = sm;
+        this.logger = Logger.getLogger(this.getClass().getName());
         this.currentState = machine.getInitial();
         this.internalQueue = new LinkedList<>();
         this.transitionEvent = initTransitionEvent();
@@ -166,6 +170,12 @@ public class StateMachineReader {
         }
     }
 
+    private void log(){
+        if (currentTransition.hasLog()){
+            logger.log(Level.INFO, currentTransition.getLog());
+        }
+    }
+
     public void activate(String event){
         internalQueue.add(new FSMEvents(event,"raise"));
         while(!internalQueue.isEmpty()){
@@ -173,6 +183,7 @@ public class StateMachineReader {
             if (getTransitionState(events.getId(),currentState)!=null) {
                 currentTransition = invokeTransition(getTransitionState(events.getId(), currentState));
                 transitionFromState();
+                log();
                 executeEvent();
                 transitionToState();
             }

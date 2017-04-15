@@ -34,6 +34,7 @@ public class MyHierarchique implements StateMachine {
 		this.State1 = new State("State1");
 		this.State3 = new State("State3", State1);
 		this.State4 = new State("State4", State1);
+		this.State1.setFirstChild(State3);
 		this.State2 = new State("State2");
 		this.e1State3 = new Transition("e1", State3, State4);
 		this.e2State4 = new Transition("e2", State4, State3);

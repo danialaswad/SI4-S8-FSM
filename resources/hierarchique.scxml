@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <scxml xmlns="http://www.w3.org/2005/07/scxml" version="1.0" binding="early" xmlns:qt="http://www.qt.io/2015/02/scxml-ext" name="ScxmlExample" qt:editorversion="4.2.1" initial="State1">
-    <state id="State1">
+    <state id="State1" initial="State3">
         <qt:editorinfo geometry="87.14;80.61;-120.30;-52.67;365.30;303.67" scenegeometry="87.14;80.61;-33.16;27.94;365.30;303.67"/>
         <state id="State3">
             <qt:editorinfo geometry="-39.21;111.14;-60;-50;120;100" scenegeometry="47.93;191.75;-12.07;141.75;120;100"/>
             <transition type="external" event="e1" target="State4">
                 <qt:editorinfo localGeometry="95.85;-37.07" endTargetFactors="11.56;49.97"/>
+                <log label="this is label" expr="exp"/>
             </transition>
         </state>
         <state id="State4">
