@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<scxml xmlns="http://www.w3.org/2005/07/scxml" version="1.0" binding="early" xmlns:qt="http://www.qt.io/2015/02/scxml-ext" name="ScxmlExample" qt:editorversion="4.2.1" initial="State1">
+    <state id="State1">
+        <qt:editorinfo geometry="87.14;80.61;-120.30;-52.67;365.30;303.67" scenegeometry="87.14;80.61;-33.16;27.94;365.30;303.67"/>
+        <state id="State3">
+            <qt:editorinfo geometry="-39.21;111.14;-60;-50;120;100" scenegeometry="47.93;191.75;-12.07;141.75;120;100"/>
+            <transition type="external" event="e1" target="State4">
+                <qt:editorinfo localGeometry="95.85;-37.07" endTargetFactors="11.56;49.97"/>
+            </transition>
+        </state>
+        <state id="State4">
+            <qt:editorinfo geometry="157.94;111.14;-60;-50;120;100" scenegeometry="245.08;191.75;185.08;141.75;120;100"/>
+            <transition type="external" event="e2" target="State3">
+                <qt:editorinfo localGeometry="-51.88;36.63" startTargetFactors="8.82;72.15" endTargetFactors="91.91;69.09" movePoint="1.09;20.70"/>
+            </transition>
+        </state>
+        <transition type="external" event="e1" target="State2">
+            <qt:editorinfo endTargetFactors="10.66;32.55"/>
+        </transition>
+    </state>
+    <state id="State2">
+        <qt:editorinfo geometry="628.51;137.25;-94;-50;154;209" scenegeometry="628.51;137.25;534.51;87.25;154;209"/>
+    </state>
+</scxml>
