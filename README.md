@@ -14,4 +14,4 @@ Avant d’exécuter le script generate.sh, assurez-vous que le dossier statemach
 ### Comment exécuter le compilateur?
 Le fichier run.sh fourni à la racine du dossier, est le script pour lancer le compilateur de state machine. Lorsque le fichier généré et le fichier de “work space” sont bien present dans le dossier statemachine, exécutez le script run.sh en précisant la classe main du programme.
 
-Pour avoir plus d'explication, veuillez consultez le ReadMe.pdf
+Pour avoir plus d'explication, veuillez consultez le [ReadMe.pdf](https://github.com/danialaswad/SI4-S8-FSM/blob/master/ReadMe.pdf)
