@@ -5,9 +5,9 @@
 ### Comment exécuter le générateur?
 Le fichier generate.sh fournis à la racine du dossier, est le script pour lancer le générateur. Quelques options est fournis pour exécuter le programme. Les options fournis sont les suivantes :
 
- Markup : *  -f [file path] : cette option est obligatoire. Utilisez cette options pour indiquer le chemin de votre fichier scxml.
-          * -n [file name] : cette option n’est pas obligatoire. Utilisez cette option pour donner le nom au fichier généré.
-          * -w [t|f] : cette option n’est pas obligatoire. Utilisez cette option pour générer aussi le workspace.
+*  -f [file path] : cette option est obligatoire. Utilisez cette options pour indiquer le chemin de votre fichier scxml.
+* -n [file name] : cette option n’est pas obligatoire. Utilisez cette option pour donner le nom au fichier généré.
+* -w [t|f] : cette option n’est pas obligatoire. Utilisez cette option pour générer aussi le workspace.
  
 Avant d’exécuter le script generate.sh, assurez-vous que le dossier statemachine est present à la racine du dossier (au meme endroit que le dossier d’entrée).
 
