@@ -1,6 +1,6 @@
 # SI4-S8-FSM
 
-## Generator and Compilateur d'un machine à état
+## Generator and Compilateur d'une machine à état
 
 ### Comment exécuter le générateur?
 Le fichier generate.sh fournis à la racine du dossier, est le script pour lancer le générateur. Quelques options est fournis pour exécuter le programme. Les options fournis sont les suivantes :
